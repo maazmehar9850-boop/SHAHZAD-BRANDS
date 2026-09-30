@@ -13,7 +13,7 @@
     "db:push": "node scripts/sync-schema-provider.mjs && prisma db push",
     "db:seed": "tsx prisma/seed.ts",
     "db:setup": "node scripts/db-setup.mjs",
-    "vercel-build": "node scripts/sync-schema-provider.mjs && prisma generate && prisma db push && tsx prisma/seed.ts && next build",
+    "vercel-build": "node scripts/sync-schema-provider.mjs && prisma generate && prisma db push && next build",
     "images:generate": "node scripts/generate-placeholders.mjs",
     "images:download": "node scripts/download-demo-images.mjs",
     "images:fix-db": "node scripts/fix-db-images.mjs",
