@@ -7,15 +7,19 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "db:generate": "prisma generate",
-    "db:push": "prisma db push",
+    "db:generate": "node scripts/sync-schema-provider.mjs && prisma generate",
+    "db:up": "docker compose up -d db",
+    "db:down": "docker compose down",
+    "db:push": "node scripts/sync-schema-provider.mjs && prisma db push",
     "db:seed": "tsx prisma/seed.ts",
+    "db:setup": "node scripts/db-setup.mjs",
+    "vercel-build": "node scripts/sync-schema-provider.mjs && prisma generate && prisma db push && tsx prisma/seed.ts && next build",
     "images:generate": "node scripts/generate-placeholders.mjs",
     "images:download": "node scripts/download-demo-images.mjs",
     "images:fix-db": "node scripts/fix-db-images.mjs",
     "images:setup": "npm run images:download && npm run images:fix-db",
     "demo:products": "node scripts/add-demo-products.mjs",
-    "postinstall": "prisma generate"
+    "postinstall": "node scripts/sync-schema-provider.mjs && prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^6.19.0",
