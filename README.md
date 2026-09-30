@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shahzad Brands
 
-## Getting Started
+Premium garments e-commerce storefront with admin back office, POS, inventory, and invoicing.
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Next.js 16** (App Router), React 19, TypeScript
+- **Tailwind CSS v4**, Lucide icons, react-hot-toast, Recharts
+- **Prisma** + SQLite (dev)
+- **Auth**: JWT session cookie `sb_session` (jose + bcrypt)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Install dependencies**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+   npm install
+   ```
 
-## Learn More
+2. **Environment**
 
-To learn more about Next.js, take a look at the following resources:
+   Copy `.env.example` to `.env`:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   cp .env.example .env
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   Set `AUTH_SECRET` to a long random string (32+ characters).
 
-## Deploy on Vercel
+3. **Database**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   npm run db:push
+   npm run db:seed
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Run**
+
+   ```bash
+   npm run dev
+   ```
+
+   Open [http://localhost:3000](http://localhost:3000).
+
+## Demo accounts
+
+| Role     | Email                      | Password      |
+|----------|----------------------------|---------------|
+| Staff    | admin@shahzadbrands.com    | Admin@123     |
+| Customer | ali.ahmed@example.com      | Customer@123  |
+
+Staff sign-in: [/admin/login](http://localhost:3000/admin/login)
+
+## Scripts
+
+| Script          | Description              |
+|-----------------|--------------------------|
+| `npm run dev`   | Development server       |
+| `npm run build` | Production build         |
+| `db:generate`   | Prisma client generate   |
+| `db:push`       | Push schema to SQLite    |
+| `db:seed`       | Seed demo data           |
+
+## Features
+
+- **Store**: homepage, product catalog with filters, quick view, wishlist, cart, checkout (order + invoice + payment + stock deduction), customer accounts & saved addresses
+- **Admin**: dashboard, products CRUD, orders, POS (invoice + payment + inventory), invoices with print/PDF, categories, customers, staff, inventory, coupons, expenses, returns, CSV reports, settings, notifications
+- **Permissions**: role-based staff access loaded into JWT on login
+
+## Project structure
+
+- `prisma/schema.prisma` — data models
+- `prisma/seed.ts` — demo seed data
+- `src/app/(store)/` — public storefront routes
+- `src/app/admin/` — staff admin UI
+- `src/app/api/` — REST API routes
+- `src/lib/` — db, auth, inventory, PDF, settings

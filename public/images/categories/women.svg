@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750">
+  <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#2c3e50"/><stop offset="100%" stop-color="#4ca1af"/>
+  </linearGradient></defs>
+  <rect width="1200" height="750" fill="url(#g)"/>
+  <text x="50%" y="48%" dominant-baseline="middle" text-anchor="middle" fill="#ffffffcc" font-family="system-ui,sans-serif" font-size="55" font-weight="600">Shahzad Brands</text>
+  <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" fill="#ffffff99" font-family="system-ui,sans-serif" font-size="38">Women</text>
+</svg>
